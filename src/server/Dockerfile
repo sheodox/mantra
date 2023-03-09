@@ -8,4 +8,4 @@ RUN go mod download
 COPY . .
 RUN go build
 
-CMD ./mantras
+CMD ./mantra
