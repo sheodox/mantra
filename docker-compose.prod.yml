@@ -4,8 +4,8 @@ services:
     build:
       context: ./src/server
     volumes:
-      - src/server/.env:/go/src/app/.env
-      - src/server/data:/go/src/app/data
+      - ./src/server/.env:/go/src/app/.env
+      - ./src/server/data:/go/src/app/data
     restart: unless-stopped
   sveltekit:
     build:
