@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  api:
+    build:
+      context: ./src/server
+    volumes:
+      - src/server/.env:/go/src/app/.env
+      - src/server/data:/go/src/app/data
+    restart: unless-stopped
+  sveltekit:
+    build:
+      context: ./src/static
+    ports:
+      - 5003:3000
+    depends_on:
+      - api
+    restart: unless-stopped

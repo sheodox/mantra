@@ -1,0 +1,6 @@
+.env
+node_modules
+# compiled server binary
+src/server/mantra
+# storage directory for mantras
+src/server/data
