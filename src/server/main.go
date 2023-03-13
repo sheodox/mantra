@@ -38,6 +38,20 @@ func main() {
 		}
 		return c.NoContent(http.StatusOK)
 	})
+	e.GET("/api/mantras/:id", func(c echo.Context) error {
+		id := c.Param("id")
+
+		mantra, err := mantras.GetMantra(id)
+
+		if err != nil {
+			if err == mantras.ErrNotFound {
+				return c.NoContent(http.StatusNotFound)
+			}
+			return c.NoContent(http.StatusBadRequest)
+		}
+
+		return c.JSON(http.StatusOK, mantra)
+	})
 	e.POST("/api/mantras/:id", func(c echo.Context) error {
 		id := c.Param("id")
 		err := mantras.UpdateMantra(c.FormValue("text"), id)

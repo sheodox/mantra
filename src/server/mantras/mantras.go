@@ -53,6 +53,22 @@ func GetMantras() []Mantra {
 	return mantras
 }
 
+func GetMantra(id string) (Mantra, error) {
+	if id == "" || len(mantras) == 0 {
+		return Mantra{}, ErrNotFound
+	}
+
+	blankMantra := Mantra{}
+
+	for _, m := range mantras {
+		if m.ID == id {
+			return m, nil
+		}
+	}
+
+	return blankMantra, ErrNotFound
+}
+
 func AddMantra(text string) error {
 	// don't add blank mantras
 	if text == "" {

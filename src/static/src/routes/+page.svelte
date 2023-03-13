@@ -1,26 +1,30 @@
+<style>
+	td {
+		padding: var(--sx-spacing-3);
+	}
+</style>
+
+<form method="POST" action="?/add" use:enhance class="mb-6">
+	<Fieldset legend="New Mantra" contentClasses="f-column gap-2">
+		<TextInput name="text" value="">Mantra</TextInput>
+		<button class="primary">Add</button>
+	</Fieldset>
+</form>
+
 {#if data.mantras.length}
 	<table>
 		<thead>
 			<tr>
 				<th>Mantra</th>
-				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
 			{#each data.mantras as mantra}
 				<tr>
 					<td>
-						<form use:enhance method="POST" action="?/update" class="f-row">
-							<input type="hidden" value={mantra.id} name="id" />
-							<TextInput name="text" value={mantra.text}>Mantra</TextInput>
-							<button>Update</button>
-						</form>
-					</td>
-					<td>
-						<form use:enhance method="POST" action="?/remove">
-							<input type="hidden" name="id" value={mantra.id} />
-							<button>Delete</button>
-						</form>
+						<a href="/mantra/{mantra.id}" class="inline-link">
+							{mantra.text}
+						</a>
 					</td>
 				</tr>
 			{/each}
@@ -29,13 +33,6 @@
 {:else}
 	<p>You don't have any mantras yet.</p>
 {/if}
-
-<form method="POST" action="?/add" use:enhance>
-	<Fieldset legend="New Mantra">
-		<TextInput name="text" value="">Mantra</TextInput>
-		<button class="primary">Add</button>
-	</Fieldset>
-</form>
 
 <script lang="ts">
 	import { TextInput, Fieldset } from 'sheodox-ui';

@@ -29,7 +29,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fortawesome/fontawesome-free": "^6.3.0",
 		"@sveltejs/adapter-node": "^1.2.2",
-		"sheodox-ui": "^0.18.31"
+		"sheodox-ui": "^0.18.33"
 	}
 }

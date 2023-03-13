@@ -1,4 +1,6 @@
-<style>
+<style global lang="scss">
+	@import '../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+
 	main {
 		margin: 0 auto;
 		max-width: 90vw;
